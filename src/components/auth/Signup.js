@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import axios from 'axios';
 
 class Signup extends Component {
     constructor() {
@@ -35,8 +36,12 @@ class Signup extends Component {
             password2 : this.state.password2,
             address : this.state.address,
             phone : this.state.phone
-        }
-        console.log(newUser);
+        };
+
+        axios.post('https://murmuring-coast-45891.herokuapp.com/api/users/signup', newUser)
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err))
+        
     }
 
   render() {
