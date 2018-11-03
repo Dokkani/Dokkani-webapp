@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { logoutUser } from '../../actions/authActions';
 
 class Navbar extends Component {
   render() {
+
     return (
         <nav className="navbar fixed-top navbar-expand-sm navbar-dark mb-4">
         <div className="container">
@@ -20,7 +24,7 @@ class Navbar extends Component {
                 <Link className="nav-link text-white" to="/login">Login</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-muted" to='/profiles'>Profile</Link>
+                <Link className="nav-link text-muted" to='/profiles'>{' '}Profile</Link>
               </li>
             </ul>
           </div>
@@ -30,4 +34,13 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+Navbar.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, { logoutUser })(Navbar);
