@@ -9,9 +9,9 @@ class Signup extends Component {
     constructor() {
         super();
         this.state ={
-         firstname: '',
-         lastname:'',
-         username:'',
+         first_name: '',
+         last_name:'',
+         user_name:'',
          email:'',
          password:'',
          password2:'',
@@ -38,9 +38,9 @@ class Signup extends Component {
         e.preventDefault();
 
         const newUser = {
-            firstname : this.state.firstname,
-            lastname : this.state.lastname,
-            username : this.state.username,
+            first_name : this.state.first_name,
+            last_name : this.state.last_name,
+            user_name : this.state.user_name,
             email : this.state.email,
             password : this.state.password,
             password2 : this.state.password2,
@@ -66,16 +66,16 @@ class Signup extends Component {
               <p className="lead text-center">Create your Dokkani account</p>
               <form noValidate onSubmit={this.onSubmit}>
                 <div className="form-group mx-sm-3 mb-3">
-                  <input type="text" className={classnames("form-control form-control-lg",{'is-invalid':errors.firstname })} placeholder="First-Name" name="firstname" value={this.state.firstname} onChange={this.onChange} />
-                  {errors.firstname && (<div className="invalid-feedback">{errors.firstname}</div>)}
+                  <input type="text" className={classnames("form-control form-control-lg",{'is-invalid':errors.first_name })} placeholder="First-Name" name="first_name" value={this.state.first_name} onChange={this.onChange} />
+                  {errors.first_name && (<div className="invalid-feedback">{errors.first_name}</div>)}
                 </div>
                 <div className="form-group mx-sm-3 mb-3">
-                  <input type="text" className={classnames("form-control form-control-lg",{'is-invalid':errors.lastname })} placeholder="Last-Name" name="lastname" value={this.state.lastname} onChange={this.onChange} />
-                  {errors.lastname && (<div className="invalid-feedback">{errors.lastname}</div>)}
+                  <input type="text" className={classnames("form-control form-control-lg",{'is-invalid':errors.last_name })} placeholder="Last-Name" name="last_name" value={this.state.last_name} onChange={this.onChange} />
+                  {errors.last_name && (<div className="invalid-feedback">{errors.last_name}</div>)}
                 </div>
                 <div className="form-group mx-sm-3 mb-3">
-                  <input type="text" className={classnames("form-control form-control-lg",{'is-invalid':errors.username })} placeholder="User-Name" name="username" value={this.state.username} onChange={this.onChange} />
-                  {errors.username && (<div className="invalid-feedback">{errors.username}</div>)}
+                  <input type="text" className={classnames("form-control form-control-lg",{'is-invalid':errors.user_name })} placeholder="User-Name" name="user_name" value={this.state.user_name} onChange={this.onChange} />
+                  {errors.user_name && (<div className="invalid-feedback">{errors.user_name}</div>)}
                 </div>
                 <div className="form-group mx-sm-3 mb-3">
                   <input type="email" className={classnames("form-control form-control-lg",{'is-invalid':errors.email })} placeholder="Email Address" name="email" value={this.state.email} onChange={this.onChange} />
