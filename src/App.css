@@ -77,3 +77,11 @@ footer{
 .form-control::placeholder {
   color: #bbb !important;
 }
+.card {
+  width: 18rem;
+  margin : 25px;
+  
+}
+.card-img-top {
+  height: 200px;
+}

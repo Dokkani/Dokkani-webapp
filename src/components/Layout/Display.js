@@ -6,53 +6,98 @@ import axios from "axios";
 
 
 class Display extends Component {
-    constructor(){
-        super();
-        this.state = {
-            data : null
+    
+        state = {
+            isLoading : true,
+            posts : [],
+            error : null
+            
+        };
+
+        getPosts() {
+            axios.get('http://localhost:5000/api/posts/')
+               
+                
+                .then(response => 
+                    response.data.map(post => ({
+                    
+                    id: `${post._id}`,
+                    title: `${post.title}`,
+                    description : `${post.description}`,
+                    price: `${post.price}`,
+                    category: `${post.category}`,
+                    images : `${post.images}`
+                    
+                }))
+                )
+                .then(posts => {
+                    this.setState({
+                        posts,
+                        isLoading : false
+                    });
+                })
+                .catch(error => this.setState({ error, isLoading : false }));
         }
-    }
-    call(){
-    axios.get('https://murmuring-coast-45891.herokuapp.com/api/posts')
-        .then(results => {
-            console.log(results.data)
-             this.setState({
-                 data: results.data
-             })
-        })
-    }
+        
+        componentDidMount(){
+            this.getPosts();
+            
+        }
+        
+    
   render() {
     
        //const { products } = this.results.data;
-
+       const { isLoading, posts } = this.state;
+       console.log(this.state);
     return (
         
-      <div className="container-fluid text-center">
-        <div className="row">
-            <div className="col sm-4">
-                <div className="sidenav text-left">
-                    <h1>Categories</h1>
-                    <a href="#Electronics">Electronics</a>
-                    <a href="#Electronics">Household</a>
-                    <a href="#Electronics">Clothes</a>
-                    <a href="#Electronics">Tools</a>
-                </div>
-            </div>
-            <div className="col sm-4">
-                <h1>Products</h1>
+      
 
-            </div>
-            <div className="col sm-4">
-                <div className='form-inline my-2 my-lg-0'>
-                    <input className="form control mr-sm-2" type="search" placeholder="Search by name" aria-label="Search" />
-                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </div>
-            </div>
-        </div>
+                
         
-      </div>
+       
+           
+        <div className="container align-text-center">
+            <div className="row">
+            {!isLoading ? (
+                posts.map(post => {
+                    const {
+                        id,title, description, price, category, images
+                    } = post;
+                    return (
+                       
+                        <div key={id} className="card">
+                            <img className="card-img-top" src={'http://localhost:5000/' + images} alt={title} />
+                            <div className="card-body">
+                                <h5 className="card-title">Name : {title}</h5>
+                                <p className="card-text">Description : {description}</p>
+                            </div>
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item"> Price : {price}/ Day</li>
+                                <li className="list-group-item">Category : {category}</li>
+                            
+                            </ul>
+                        </div>
+                        
+                        
+                    )
+                })
+            ) : (
+                <p>Loading.....</p>
+            )
+        
+        }
+        </div>
+        </div>
+    
+
+   
+        
+     
     )
   }
 }
+
 
 export default Display;
