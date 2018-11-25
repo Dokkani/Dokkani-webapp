@@ -5,7 +5,10 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
 import { clearCurrentProfile } from '../../actions/profileAction';
 
+
+
 class Navbar extends Component {
+  
   onLogoutClick(e) {
     e.preventDefault();
     this.props.clearCurrentProfile();
@@ -19,6 +22,11 @@ class Navbar extends Component {
 
     const authLinks = (
         <ul className="navbar-nav ml-auto">
+          <li className="nav-item">
+            <Link className="nav-link" to="/feed">
+              Add Post
+            </Link>
+          </li>
           <li className="nav-item">
             <a href="/login" onClick={this.onLogoutClick.bind(this)} className="nav-link">
             
@@ -44,7 +52,7 @@ class Navbar extends Component {
     );
 
     return (
-        <nav className="navbar fixed-top navbar-expand-sm navbar-dark bg-dark mb-4">
+        <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark scrolling-navbar mb-4">
         <div className="container">
           <Link className="navbar-brand text-white" to="/">Dokkani</Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
@@ -65,6 +73,9 @@ class Navbar extends Component {
     )
   }
 }
+
+
+
 
 Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,

@@ -16,7 +16,8 @@ import Display from './components/Layout/Display';
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
 import Footer from './components/Layout/Footer';
-import Dashboard from './components/dashboard/Dashboard';
+import Posts from './components/posts/Posts';
+//import Dashboard from './components/dashboard/Dashboard';
 import { clearCurrentProfile } from './actions/profileAction';
 
 
@@ -42,6 +43,8 @@ if (localStorage.jwtToken) {
 }
 
 
+
+
 class App extends Component {
   render() {
     return (
@@ -55,8 +58,12 @@ class App extends Component {
           <Route exact path='/signup' component={ Signup }/>
           <Route exact path='/login' component={ Login }/>
           <Switch>
-          <PrivateRoute exact path='/dashboard' component={ Dashboard }/>
+          <PrivateRoute exact path='/Display' component={ Display }/>
           </Switch>
+          <Switch>
+          <PrivateRoute exact path='/feed' component={ Posts }/>
+          </Switch>
+
         </div>
         <Footer/>
         </div>

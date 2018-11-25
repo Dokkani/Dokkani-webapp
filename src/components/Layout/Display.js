@@ -15,7 +15,7 @@ class Display extends Component {
         };
 
         getPosts() {
-            axios.get('http://localhost:5000/api/posts/')
+            axios.get('http://localhost:5000/api/posts/?l=10')
                
                 
                 .then(response => 
@@ -51,14 +51,9 @@ class Display extends Component {
        const { isLoading, posts } = this.state;
        console.log(this.state);
     return (
-        
-      
 
-                
-        
-       
            
-        <div className="container align-text-center">
+        <div className="container-fluid">
             <div className="row">
             {!isLoading ? (
                 posts.map(post => {
@@ -70,26 +65,26 @@ class Display extends Component {
                         <div key={id} className="card">
                             <img className="card-img-top" src={'http://localhost:5000/' + images} alt={title} />
                             <div className="card-body">
-                                <h5 className="card-title">Name : {title}</h5>
-                                <p className="card-text">Description : {description}</p>
+                                <h5 className="card-title"> {title}</h5>
+                                <p className="card-text">{description}</p>
                             </div>
                             <ul className="list-group list-group-flush">
-                                <li className="list-group-item"> Price : {price}/ Day</li>
+                                <li className="list-group-item"> Price : ${price}/ Day</li>
                                 <li className="list-group-item">Category : {category}</li>
                             
                             </ul>
                         </div>
-                        
+                       
                         
                     )
                 })
             ) : (
                 <p>Loading.....</p>
             )
-        
         }
         </div>
         </div>
+    
     
 
    

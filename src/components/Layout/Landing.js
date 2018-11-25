@@ -22,8 +22,8 @@ class Landing extends Component {
                 </h1>
                 <p className="lead">The Easiest Way to Rent Out Your Unused Stuff</p>
                 <hr />
-                <Link to="/signup" className="btn btn-lg btn-outline-primary mr-2">Sign Up</Link>
-                <Link to="/login" className="btn btn-lg btn-outline-light">Login</Link>
+                <Link to="/signup" className="btn btn-lg btn-dark mr-2">Sign Up</Link>
+                <Link to="/login" className="btn btn-lg btn-light">Login</Link>
               </div>
             </div>
           </div>

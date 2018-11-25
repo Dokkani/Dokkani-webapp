@@ -4,8 +4,8 @@ import {ADD_POST, GET_ERRORS} from './types';
 
 //add post
 
-export const addpost = postData => dispatch => {
-    axios.post('https://murmuring-coast-45891.herokuapp.com/api/posts' , postData)
+export const addPost = postData => dispatch => {
+    axios.post('http://localhost:5000/api/posts' , postData)
     .then(res => dispatch({
         type : ADD_POST,
         payload : res.data

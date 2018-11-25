@@ -4,10 +4,10 @@ img {
 
 .landing {
   position: relative;
-  background: url('./img/street.jpg') no-repeat;
+  background: url('./img/los-angeles-header.jpg') no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  height: 90vh;
 }
 
 .landing-inner {
@@ -78,10 +78,34 @@ footer{
   color: #bbb !important;
 }
 .card {
+  box-shadow: 0px 5px 10px #9a9c9c;
   width: 18rem;
-  margin : 25px;
-  
+  margin: 1rem;
+  margin-left : 3rem;
 }
 .card-img-top {
   height: 200px;
+}
+
+.cardlist{
+  margin-top: 5rem;
+}
+.feed{
+  margin : 5rem;
+}
+.list-group-item{
+  color: rgb(0, 183, 255);
+}
+.top-nav-collapse {
+  background-color: #2c8f8f !important;
+}
+
+.navbar:not(.top-navbar-collapse) {
+  background: transparent !important;
+}
+
+@media (max-width: 991px) {
+  .navbar:not(.top-navbar-collapse) {
+    background: #7888dd !important;
+  }
 }
